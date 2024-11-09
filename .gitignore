@@ -1,0 +1,8 @@
+lambda_function.zip
+JAVA_Script.zip
+.terraform/
+JAVA_Script/
+Secondary_Repo/
+.terraform.lock.hcl
+script_bk.js
+terraform*
