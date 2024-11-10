@@ -25,6 +25,10 @@ jobs:
       with:
         python-version: '3.12'
 
+    - name: Zip the File
+      run: |
+        zip -r lambda_function.zip lambda_function/*
+
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
