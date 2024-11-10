@@ -37,7 +37,7 @@ jobs:
 
     - name: Download artifact
       uses: actions/download-artifact@v2
-      with
+      with:
         name: lambda_function  # Name of the artifact to download
         path: ./lambda_function
 
@@ -48,3 +48,20 @@ jobs:
     - name: Run unit tests
       run: |
         python -m unittest discover
+    - name: HashiCorp - Setup Terraform
+      uses: hashicorp/setup-terraform@v2.0.3
+      
+    - name: Terraform Init
+      run: terraform init  # Initializes Terraform
+      
+    - name: Terraform Plan
+      run: terraform plan  # Runs terraform plan to show what changes will be applied
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve  # Applies the changes (auto-approve skips confirmation)
+      if: github.event_name == 'push'  # Apply only when pushing to main (not on PR)
+      
+    - name: Terraform Output
+      run: terraform output 
+         
+          
