@@ -29,12 +29,6 @@ jobs:
       run: |
         zip -r lambda_function.zip lambda_function/*
 
-    - name: Upload zip as artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: lambda_function
-        path: lambda_function.zip
-
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
