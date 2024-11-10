@@ -35,12 +35,6 @@ jobs:
         name: lambda_function
         path: lambda_function.zip
 
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: lambda_function  # Name of the artifact to download
-        path: ./lambda_function
-
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
