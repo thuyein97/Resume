@@ -37,9 +37,6 @@ jobs:
       run: |
         pip install -r requirements.txt
 
-    - name: Run unit tests
-      run: |
-        python -m unittest discover
     - name: HashiCorp - Setup Terraform
       uses: hashicorp/setup-terraform@v2.0.3
       
@@ -52,6 +49,10 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -auto-approve  # Applies the changes (auto-approve skips confirmation)
       if: github.event_name == 'push'  # Apply only when pushing to main (not on PR)
+    
+    - name: Run unit tests
+      run: |
+        python -m unittest discover
       
     - name: Terraform Output
       run: terraform output 
